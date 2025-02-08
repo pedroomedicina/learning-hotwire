@@ -1,0 +1,4 @@
+<div class="flex items-center">
+  <%= link_to todo.name, [todo.project, todo] %>
+  <%= image_tag todo.user.gravatar_url, class: "avatar" if todo.user %>
+</div>

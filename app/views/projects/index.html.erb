@@ -1,0 +1,8 @@
+<%= content_for :title, "Projects" %>
+
+<hgroup>
+  <h1>Projects</h1>
+  <%= link_to "New project", new_project_path %>
+</hgroup>
+
+<%= render @projects %>

@@ -1,0 +1,22 @@
+<hgroup>
+  <h1><%= @project.name %></h1>
+  <%= link_to "Edit project", edit_project_path(@project) %>
+</hgroup>
+
+<hgroup>
+  <h3>Todos</h3>
+  <%= link_to "Add a todo", new_project_todo_path(@project) %>
+</hgroup>
+
+<div>
+  <% @project.todos.each do |todo| %>
+    <div class="flex">
+      <%= form_with model: [@project, todo] do |form| %>
+        <%= form.checkbox :completed %>
+        <%= form.submit "Save" %>
+      <% end %>
+
+      <%= render todo %>
+    </div>
+  <% end %>
+</div>

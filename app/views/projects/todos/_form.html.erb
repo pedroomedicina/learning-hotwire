@@ -1,0 +1,32 @@
+<%= form_with model: [project, todo] do |form| %>
+  <%= render "errors", object: form.object %>
+  <div>
+    <%= form.label :name, autofocus: true %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.textarea :description %>
+  </div>
+
+  <div>
+    <%= form.label :due_date %>
+    <%= form.date_field :due_date %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, "Assigned to" %>
+    <%= form.collection_select :user_id, project.users, :id, :name, {include_blank: "Nobody"} %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+    <% if form.object.persisted? %>
+      <%= button_tag "Destroy", form: :delete_todo, class: "contrast" %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_with model: [project, todo], method: :delete, id: :delete_todo do %>
+<% end %>
