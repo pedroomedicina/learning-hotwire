@@ -10,6 +10,7 @@ class Projects::TodosController < ApplicationController
   end
 
   def create
+    sleep 10
     @todo = @project.todos.new(todo_params)
 
     if @todo.save
