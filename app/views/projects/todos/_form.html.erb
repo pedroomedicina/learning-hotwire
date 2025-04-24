@@ -3,11 +3,13 @@
   <div>
     <%= form.label :name, autofocus: true %>
     <%= form.text_field :name %>
+    <word-count target="todo_name"></word-count>
   </div>
 
   <div>
     <%= form.label :description %>
     <%= form.textarea :description %>
+    <word-count target="todo_description"></word-count>
   </div>
 
   <div>
