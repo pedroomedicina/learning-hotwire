@@ -1,5 +1,5 @@
 <%= turbo_frame_tag @project, :edit_name do %>
-  <%= form_with model: @project do |form| %>
+  <%= form_with model: @project, url: project_name_path(@project) do |form| %>
     <fieldset role="group">
       <%= form.text_field :name, autofocus: true %>
       <%= form.submit %>
