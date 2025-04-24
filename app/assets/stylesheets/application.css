@@ -37,6 +37,8 @@
   width: 1rem;
 }
 
+/* spinner */
+
 .spinner_OSmW{
  transform-origin:center;
  animation:spinner_T6mA .75s step-end infinite
@@ -79,4 +81,24 @@
   100%{
     transform:rotate(360deg)
   }
+}
+
+/* view transition */
+
+html[data-turbo-visit-direction="forward"]::view-transition-old(root) {
+  animation: slide-out 0.25s;
+}
+
+html[data-turbo-visit-direction="forward"]::view-transition-new(root) {
+  animation: slide-in 0.25s;
+}
+
+@keyframes slide-in {
+  0% {transform: translateX(-100%);}
+  100% {transform: translateX(0%);}
+}
+
+@keyframes slide-out {
+  0% {transform: translateX(0%);}
+  100% {transform: translateX(+100%);}
 }

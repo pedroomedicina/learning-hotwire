@@ -10,7 +10,6 @@ class Projects::TodosController < ApplicationController
   end
 
   def create
-    sleep 10
     @todo = @project.todos.new(todo_params)
 
     if @todo.save
@@ -33,7 +32,7 @@ class Projects::TodosController < ApplicationController
 
   def destroy
     @todo.destroy
-    redirect_to @project, notice: "Todo successfully deleted!"
+    redirect_to @project, status: :see_other, notice: "Todo successfully deleted!"
   end
 
   private
