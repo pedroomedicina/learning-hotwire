@@ -1,5 +1,7 @@
 <hgroup>
-  <h1><%= @project.name %></h1>
+  <turbo-frame id="edit_name">
+    <h1><%= link_to @project.name, edit_project_name_path(@project) %></h1>
+  </turbo-frame>
   <%= link_to "Edit project", edit_project_path(@project) %>
 </hgroup>
 

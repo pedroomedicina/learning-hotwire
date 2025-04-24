@@ -1,0 +1,8 @@
+<turbo-frame id="edit_name">
+  <%= form_with model: @project do |form| %>
+    <fieldset role="group">
+      <%= form.text_field :name, autofocus: true %>
+      <%= form.submit %>
+    </fieldset>
+  <% end %>
+</turbo-frame>
