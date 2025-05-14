@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     scope module: :projects do
       resources :memberships
       resources :todos
+      resources :users
       resource :name
     end
   end

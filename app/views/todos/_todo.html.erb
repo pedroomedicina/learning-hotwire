@@ -1,4 +1,10 @@
 <div class="flex items-center">
   <%= link_to todo.name, [todo.project, todo] %>
-  <%= image_tag todo.user.gravatar_url, class: "avatar" if todo.user %>
+  <% if todo.user %>
+    <div class="hovercard">
+      <%= image_tag todo.user.gravatar_url, class: "avatar" if todo.user %>
+      <%= turbo_frame_tag todo.user, :hovercard, src: project_user_path(todo.project, todo.user), loading: :lazy do %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

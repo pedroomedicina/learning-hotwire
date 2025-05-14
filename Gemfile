@@ -63,3 +63,5 @@ group :test do
 end
 
 gem "acts_as_list", "~> 1.2"
+
+gem "pagy", "~> 9.3"

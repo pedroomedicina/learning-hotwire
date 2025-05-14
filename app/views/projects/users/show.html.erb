@@ -1,0 +1,6 @@
+<%= turbo_frame_tag @user, :hovercard do %>
+  <article>
+    <%= tag.h6 @user.name %>
+    <%= tag.div pluralize(@user.todos.count, "todo") %>
+  </article>
+<% end %>

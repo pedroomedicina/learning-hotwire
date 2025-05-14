@@ -4,4 +4,11 @@
 <% end %>
 
 <h1>My Todos</h1>
-<%= render @todos %>
+<%= turbo_frame_tag :todos_page, @pagy.page do %>
+  <%= render @todos %>
+  <% if @pagy.next %>
+    <%= turbo_frame_tag :todos_page, @pagy.next, src: todos_path(page: @pagy.next), loading: :lazy  do %>
+      <%= tag.div "loading ..."  %>
+    <% end %>
+  <% end %>
+<% end %>

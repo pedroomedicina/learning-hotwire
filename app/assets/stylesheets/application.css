@@ -102,3 +102,22 @@ html[data-turbo-visit-direction="forward"]::view-transition-new(root) {
   0% {transform: translateX(0%);}
   100% {transform: translateX(+100%);}
 }
+
+.hovercard {
+  position: relative;
+
+  turbo-frame {
+    display: none;
+
+    position: absolute;
+    left: 0;
+    bottom: 50%;
+    width: 300px;
+  }
+
+  &:hover {
+    turbo-frame {
+      display: block;
+    }
+  }
+}
