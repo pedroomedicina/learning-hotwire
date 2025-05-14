@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
+    @todos = @project.todos.search(params[:query])
   end
 
   # GET /projects/new

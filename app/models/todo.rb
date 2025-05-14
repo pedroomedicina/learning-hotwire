@@ -9,4 +9,10 @@ class Todo < ApplicationRecord
   acts_as_list scope: :project
 
   validates :name, presence: true
+
+  def self.search(query)
+    return all if query.blank?
+
+    where(arel_table[:name].matches("%#{sanitize_sql_like(query)}%"))
+  end
 end

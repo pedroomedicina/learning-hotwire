@@ -10,15 +10,19 @@
   <%= link_to "Add a todo", new_project_todo_path(@project) %>
 </hgroup>
 
-<div>
-  <% @project.todos.each do |todo| %>
-    <div class="flex">
-      <%= form_with model: [@project, todo] do |form| %>
-        <%= form.checkbox :completed %>
-        <%= form.submit "Save" %>
-      <% end %>
+<%= form_with url: project_path(@project), method: :get, data: {turbo_frame: :todos} do |form| %>
+  <%= form.search_field :query, oninput: "this.form.requestSubmit()" %>
+<% end %>
 
-      <%= render todo %>
-    </div>
-  <% end %>
-</div>
+<%= turbo_frame_tag "todos", target: :_top do %>
+    <% @todos.each do |todo| %>
+      <div class="flex">
+        <%= form_with model: [@project, todo] do |form| %>
+          <%= form.checkbox :completed %>
+          <%= form.submit "Save" %>
+        <% end %>
+
+        <%= render todo %>
+      </div>
+    <% end %>
+<% end %>
