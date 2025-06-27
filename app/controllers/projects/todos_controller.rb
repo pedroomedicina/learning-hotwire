@@ -12,10 +12,14 @@ class Projects::TodosController < ApplicationController
   def create
     @todo = @project.todos.new(todo_params)
 
-    if @todo.save
-      redirect_to @project
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @todo.save
+        format.html { redirect_to @project }
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new }
+      end
     end
   end
 
