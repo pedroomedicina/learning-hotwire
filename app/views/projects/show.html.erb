@@ -7,7 +7,9 @@
 
 <hgroup>
   <h3>Todos</h3>
-  <%= link_to "Add a todo", new_project_todo_path(@project), id: :new_todo, data: { turbo_stream: true } %>
+  <div id="todo_form_top" data-turbo-permanent="true">
+    <%= link_to "Add a todo", new_project_todo_path(@project), id: :new_todo, data: { turbo_stream: true } %>
+  </div>
 </hgroup>
 
 <%= form_with url: project_path(@project), method: :get, data: {turbo_frame: :todos} do |form| %>
@@ -18,3 +20,7 @@
 <%= turbo_frame_tag "todos", target: :_top, data: {turbo_action: :advance} do %>
     <%= render @todos %>
 <% end %>
+
+<div id="todo_form" data-turbo-permanent="true">
+  <%= link_to "Add a todo", new_project_todo_path(@project), id: :new_todo, data: {turbo_stream: true} %>
+</div>
