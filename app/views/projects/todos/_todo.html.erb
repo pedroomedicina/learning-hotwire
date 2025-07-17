@@ -1,8 +1,0 @@
-<div class="flex">
-  <%= form_with model: [@project, todo] do |form| %>
-    <%= form.checkbox :completed %>
-    <%= form.submit "Save" %>
-  <% end %>
-
-  <%= render partial: "todos/todo", locals: {todo: todo} %>
-</div>

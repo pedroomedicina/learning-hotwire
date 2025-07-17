@@ -14,6 +14,7 @@
   <%= form.search_field :query, oninput: "this.form.requestSubmit()" %>
 <% end %>
 
+<%= turbo_stream_from @project %>
 <%= turbo_frame_tag "todos", target: :_top do %>
-    <%= render partial: "projects/todos/todo", collection: @todos, locals: {project: @project} %>
+    <%= render @todos %>
 <% end %>

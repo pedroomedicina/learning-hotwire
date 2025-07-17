@@ -1,2 +1,2 @@
 <%= turbo_stream.replace :new_todo, partial: "projects/todos/form", locals: {project: @project, todo: Todo.new} %>
-<%= turbo_stream.append :todos, partial: "projects/todos/todo", locals: {project: @project, todo: @todo} %>
+<%#= turbo_stream.append :todos, partial: "projects/todos/todo", locals: {project: @project, todo: @todo} %>
