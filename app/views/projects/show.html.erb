@@ -11,10 +11,10 @@
 </hgroup>
 
 <%= form_with url: project_path(@project), method: :get, data: {turbo_frame: :todos} do |form| %>
-  <%= form.search_field :query, oninput: "this.form.requestSubmit()" %>
+  <%= form.search_field :query, value: params[:query], oninput: "this.form.requestSubmit()" %>
 <% end %>
 
 <%= turbo_stream_from @project %>
-<%= turbo_frame_tag "todos", target: :_top do %>
+<%= turbo_frame_tag "todos", target: :_top, data: {turbo_action: :advance} do %>
     <%= render @todos %>
 <% end %>
