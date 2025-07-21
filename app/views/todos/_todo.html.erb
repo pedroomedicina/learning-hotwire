@@ -1,7 +1,6 @@
 <%= tag.div id: dom_id(todo), class: "flex" do %>
   <%= form_with model: [todo.project, todo] do |form| %>
-    <%= form.checkbox :completed %>
-    <%= form.submit "Save" %>
+    <%= form.checkbox :completed, data: { controller: "autosubmit", action: "change->autosubmit#submit" } %>
   <% end %>
 
   <div class="flex items-center">

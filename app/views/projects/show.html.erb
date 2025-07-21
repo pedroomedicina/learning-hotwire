@@ -13,7 +13,7 @@
 </hgroup>
 
 <%= form_with url: project_path(@project), method: :get, data: {turbo_frame: :todos} do |form| %>
-  <%= form.search_field :query, value: params[:query], oninput: "this.form.requestSubmit()" %>
+  <%= form.search_field :query, value: params[:query], data: { controller: "autosubmit", action: "input->autosubmit#submit" } %>
 <% end %>
 
 <%= turbo_stream_from @project %>
