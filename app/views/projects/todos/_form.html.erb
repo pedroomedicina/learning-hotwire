@@ -8,7 +8,7 @@
 
   <div>
     <%= form.label :description %>
-    <%= form.textarea :description %>
+    <%= form.textarea :description, data: { controller: "autogrow", action: "input->autogrow#resize" } %>
     <word-count target="todo_description"></word-count>
   </div>
 
