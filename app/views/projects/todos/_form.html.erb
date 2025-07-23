@@ -2,7 +2,7 @@
   <%= render "errors", object: form.object %>
   <div>
     <%= form.label :name, autofocus: true %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
     <word-count target="todo_name"></word-count>
   </div>
 
