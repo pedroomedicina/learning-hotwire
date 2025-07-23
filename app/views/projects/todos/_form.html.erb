@@ -1,4 +1,4 @@
-<%= form_with model: [project, todo], id: (todo.new_record? ? :new_todo : :edit_todo) do |form| %>
+<%= form_with model: [project, todo], id: (todo.new_record? ? :new_todo : :edit_todo), data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } do |form| %>
   <%= render "errors", object: form.object %>
   <div>
     <%= form.label :name, autofocus: true %>
