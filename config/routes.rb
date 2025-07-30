@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :projects do
     scope module: :projects do
       resources :memberships
-      resources :todos
+      resources :todos do
+        member do
+          patch :reposition
+        end
+      end
       resources :users
       resource :name
     end

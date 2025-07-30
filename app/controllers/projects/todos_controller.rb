@@ -1,6 +1,6 @@
 class Projects::TodosController < ApplicationController
   before_action :set_project
-  before_action :set_todo, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_todo, only: [ :show, :edit, :update, :destroy, :reposition ]
 
   def show
   end
@@ -33,6 +33,11 @@ class Projects::TodosController < ApplicationController
   def destroy
     @todo.destroy
     redirect_to @project, status: :see_other, notice: "Todo successfully deleted!"
+  end
+
+  def reposition
+    @todo.insert_at(params[:position].to_i)
+    head :ok
   end
 
   private
