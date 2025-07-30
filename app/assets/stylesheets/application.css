@@ -121,3 +121,13 @@ html[data-turbo-visit-direction="forward"]::view-transition-new(root) {
     }
   }
 }
+
+.hidden {
+  display: none;
+}
+
+.tabs {
+  .active-tab {
+    text-decoration: underline;
+  }
+}

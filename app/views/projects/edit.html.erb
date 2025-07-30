@@ -1,16 +1,29 @@
 <h1>Edit Project</h1>
-<%= render "form", project: @project %>
-
-<h3>Members</h3>
-<section>
-  <% @project.users.each do |user| %>
-    <div class="flex items-center">
-      <%= tag.div user.name %>
-      <%= button_to "Remove", project_membership_path(@project, user), method: :delete unless Current.user == user %>
+<div data-controller="tabs" class="tabs" data-tabs-current-value="1">
+  <nav>
+    <ul>
+      <li><a data-tabs-target="tab" href="#" data-action="tabs#change:prevent">Details</a></li>
+      <li><a data-tabs-target="tab" href="#" data-action="tabs#change:prevent">Members</a></li>
+    </ul>
+  </nav>
+  <div>
+    <div data-tabs-target="panel" class="hidden">
+      <%= render "form", project: @project %>
     </div>
-  <% end %>
-</section>
 
-<% User.where.not(id: @project.user_ids).each do |user| %>
-  <%= button_to "Add #{user.name}", project_memberships_path(@project, user_id: user) %>
-<% end %>
+    <div data-tabs-target="panel" class="hidden">
+      <h3>Members</h3>
+      <section>
+      <% @project.users.each do |user| %>
+        <div class="flex items-center">
+          <%= tag.div user.name %>
+          <%= button_to "Remove", project_membership_path(@project, user), method: :delete unless Current.user == user %>
+        </div>
+      <% end %>
+    </section>
+
+    <% User.where.not(id: @project.user_ids).each do |user| %>
+      <%= button_to "Add #{user.name}", project_memberships_path(@project, user_id: user) %>
+    <% end %>
+  </div>
+</div>
