@@ -10,6 +10,18 @@ export default class extends Controller {
         this.currentValue = this.tabTargets.indexOf(event.target)
     }
 
+    previous() {
+        if (this.currentValue > 0) {
+            this.currentValue--;
+        }
+    }
+
+    next() {
+        if (this.currentValue < this.tabTargets.length - 1) {
+            this.currentValue++;
+        }
+    }
+
     currentValueChanged(newValue, oldValue) {
         if (oldValue !== undefined) {
             this.tabTargets[oldValue].classList.remove("active-tab")
