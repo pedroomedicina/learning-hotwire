@@ -7,7 +7,7 @@ export default class extends Controller {
     }
 
     change(event) {
-        this.currentValue = this.tabTargets.indexOf(event.target)
+        this.currentValue = event.params.index ? parseInt(event.params.index) : this.tabTargets.indexOf(event.target)
     }
 
     previous() {

@@ -9,6 +9,7 @@
   <div>
     <div data-tabs-target="panel" class="hidden">
       <%= render "form", project: @project %>
+      <a href="#" data-action="click->tabs#change:prevent" data-tabs-index-param="1">Add Member</a>
     </div>
 
     <div data-tabs-target="panel" class="hidden">
