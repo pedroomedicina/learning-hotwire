@@ -127,7 +127,7 @@ html[data-turbo-visit-direction="forward"]::view-transition-new(root) {
 }
 
 .tabs {
-  .active-tab {
+  .active {
     text-decoration: underline;
   }
 }
