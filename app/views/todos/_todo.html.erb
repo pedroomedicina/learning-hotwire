@@ -1,4 +1,4 @@
-<%= tag.div id: dom_id(todo), class: "flex", data: { reposition_url: reposition_project_todo_path(todo.project, todo) } do %>
+<%= tag.div id: dom_id(todo), class: "flex", data: { reposition_url: reposition_project_todo_path(todo.project, todo), todolist_target: "todo" } do %>
   <%= form_with model: [todo.project, todo] do |form| %>
     <%= form.checkbox :completed, data: { controller: "autosubmit", action: "change->autosubmit#submit" } %>
   <% end %>
