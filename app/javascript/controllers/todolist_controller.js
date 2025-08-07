@@ -5,7 +5,12 @@ export default class extends Controller {
   static outlets = ["todo"]
 
   connect() {
-    console.log(this.todoOutlets)
+    this.boundUpdate = this.updateCounter.bind(this)
+    document.addEventListener("turbo:morph", this.boundUpdate)
+  }
+
+  disconnect() {
+    document.removeEventListener("turbo:morph", this.boundUpdate)
   }
 
   todoOutletConnected(element) {

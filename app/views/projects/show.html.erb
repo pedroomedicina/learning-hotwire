@@ -8,7 +8,7 @@
 <div data-controller="todolist" data-todolist-todo-outlet="[data-controller='todo']">
   <hgroup>
     <h3>Todos</h3>
-    <div data-todolist-target="counter"></div>
+    <div data-turbo-permanent="true" data-todolist-target="counter"></div>
   </hgroup>
 
   <%= form_with url: project_path(@project), method: :get, data: {turbo_frame: :todos} do |form| %>
