@@ -1,19 +1,21 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["todo", "counter"]
+  static targets = ["counter"]
+  static outlets = ["todo"]
 
   connect() {
-    this.counterTarget.textContent = `${this.todoTargets.length}` 
+    console.log(this.todoOutlets)
   }
 
-  todoTargetConnected(event) {
+  todoOutletConnected(element) {
     this.updateCounter()
   }
-  todoTargetDisconnected(event) {
+  todoOutletDisconnected(element) {
     this.updateCounter()
   }
   updateCounter() {
-    this.counterTarget.textContent = `${this.todoTargets.length}` 
+    const completed = this.todoOutlets.filter(todo => todo.complete).length
+    this.counterTarget.textContent = `${completed} of ${this.todoOutlets.length} complete` 
   }
 }

@@ -5,7 +5,7 @@
   <%= link_to "Edit project", edit_project_path(@project) %>
 </hgroup>
 
-<div data-controller="todolist">
+<div data-controller="todolist" data-todolist-todo-outlet="[data-controller='todo']">
   <hgroup>
     <h3>Todos</h3>
     <div data-todolist-target="counter"></div>
