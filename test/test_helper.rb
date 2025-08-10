@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "test_helpers/session_test_helper"
+require "test_helpers/disable_turbo_debouncer"
 
 module ActiveSupport
   class TestCase
