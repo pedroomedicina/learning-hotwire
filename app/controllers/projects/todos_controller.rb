@@ -24,7 +24,11 @@ class Projects::TodosController < ApplicationController
 
   def update
     if @todo.update(todo_params)
-      redirect_back_or_to @project
+      if params[:inline]
+        render turbo_stream: turbo_stream.replace(@todo, partial: "todos/todo", locals: { todo: @todo, inline: true })
+      else
+        redirect_back_or_to [ @project, @todo ], status: :see_other
+      end
     else
       render :edit, status: :unprocessable_entity
     end

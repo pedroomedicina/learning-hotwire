@@ -3,8 +3,8 @@
   data: { controller: "todo", 
   todolist_target: "todo",
   reposition_url: reposition_project_todo_path(todo.project, todo) } do %>
-  <%= form_with model: [todo.project, todo] do |form| %>
-    <%= form.checkbox :completed, data: { todo_target: "checkbox", controller: "autosubmit", action: "change->autosubmit#submit" } %>
+  <%= form_with model: todo, url: project_todo_path(todo.project, todo, local_assigns.slice(:inline)) do |form| %>
+    <%= form.checkbox :completed, id: dom_id(todo, :completed), data: { todo_target: "checkbox", controller: "autosubmit", action: "change->autosubmit#submit" } %>
   <% end %>
 
   <div class="flex items-center">

@@ -7,9 +7,26 @@ class Todo < ApplicationRecord
   default_scope { order(position: :asc) }
 
   acts_as_list scope: :project
-  # broadcasts_to :project
   broadcasts_refreshes_to :project
-  broadcasts_refreshes_to :user
+
+  after_create_commit do
+    broadcast_action_later_to user, action: :prepend, partial: "todos/todo", locals: { inline: true }
+  end
+
+  after_update_commit do
+    if user_id_previously_changed?
+      if (previous_user = User.find_by(id: user_id_previously_was))
+        broadcast_remove_to previous_user
+      end
+      broadcast_action_later_to user, action: :prepend, partial: "todos/todo", locals: { inline: true }
+    else
+      broadcast_replace_later_to user, partial: "todos/todo", locals: { inline: true }
+    end
+  end
+
+  after_destroy_commit do
+    broadcast_remove_to user
+  end  
 
   validates :name, presence: true
 

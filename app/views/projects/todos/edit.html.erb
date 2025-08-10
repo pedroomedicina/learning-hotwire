@@ -1,2 +1,4 @@
 <h1><%= link_to @project.name, @project %></h1>
-<%= render "form", project: @project, todo: @todo %>
+<%= turbo_frame_tag @todo do %>
+  <%= render "form", project: @project, todo: @todo %>
+<% end %>
