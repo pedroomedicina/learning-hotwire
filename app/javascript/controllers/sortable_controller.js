@@ -17,7 +17,7 @@ export default class extends Controller {
   onEnd(event) {
     const url = event.item.dataset.repositionUrl
     const data = { position: event.newIndex + 1 }
-    const csrfToken = document.querySelector("meta[name='csrf-token']").content
+    const csrfToken = document.querySelector("meta[name='csrf-token']")?.content
 
     fetch(url, {
       method: "PATCH",
